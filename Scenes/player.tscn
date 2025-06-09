@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://g7b1vks6qhte"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_ilyns"]
+[ext_resource type="PackedScene" uid="uid://s4raba3ek87r" path="res://Scenes/bullet.tscn" id="2_ca13c"]
+[ext_resource type="Texture2D" uid="uid://0jy2ylf6yjcq" path="res://Assets/icon.svg" id="2_e2u0d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnrgt"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_ilyns")
+BulletPath = ExtResource("2_ca13c")
+
+[node name="Form" type="Sprite2D" parent="." groups=["player"]]
+texture = ExtResource("2_e2u0d")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+scale = Vector2(6.435, 6.435)
+shape = SubResource("RectangleShape2D_vnrgt")

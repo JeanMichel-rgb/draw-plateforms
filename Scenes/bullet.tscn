@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://s4raba3ek87r"]
+
+[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_p61y7"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sfa7d"]
+
+[node name="Bullet" type="Node2D"]
+script = ExtResource("1_p61y7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+rotation = -1.5708
+
+[node name="Forme" type="MeshInstance2D" parent="StaticBody2D"]
+scale = Vector2(3, 3)
+mesh = SubResource("CapsuleMesh_sfa7d")
+
+[node name="Chek" type="RayCast2D" parent="StaticBody2D"]
+target_position = Vector2(0, 30)

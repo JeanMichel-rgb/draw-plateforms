@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmd34m27ev387"]
+
+[ext_resource type="Script" path="res://Scripts/mob.gd" id="1_2aekv"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_b24im"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnrgt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eo5q6"]
+
+[node name="Mob" type="CharacterBody2D"]
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_2aekv")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+scale = Vector2(99, 99)
+mesh = SubResource("QuadMesh_b24im")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_vnrgt")
+
+[node name="Chek" type="ShapeCast2D" parent="."]
+scale = Vector2(5.3, 5.3)
+shape = SubResource("RectangleShape2D_eo5q6")
+target_position = Vector2(0, 0)

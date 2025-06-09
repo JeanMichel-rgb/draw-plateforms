@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://bhqj6xcnwckut"]
+
+[ext_resource type="Script" path="res://Scripts/map.gd" id="1_siqp8"]
+[ext_resource type="PackedScene" uid="uid://g7b1vks6qhte" path="res://Scenes/player.tscn" id="2_jnoyw"]
+[ext_resource type="PackedScene" uid="uid://cmd34m27ev387" path="res://Scenes/mob.tscn" id="3_52yij"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_vtls7"]
+size = Vector2(500, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fgrwv"]
+size = Vector2(501, 101)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w74eu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3wwd0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5qanq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xa78q"]
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_siqp8")
+PlayerPath = ExtResource("2_jnoyw")
+MobPath = ExtResource("3_52yij")
+
+[node name="BaseGround" type="StaticBody2D" parent="."]
+position = Vector2(573, 327)
+
+[node name="Form" type="MeshInstance2D" parent="BaseGround"]
+position = Vector2(0, 247)
+mesh = SubResource("QuadMesh_vtls7")
+
+[node name="Collision" type="CollisionShape2D" parent="BaseGround"]
+position = Vector2(0, 247)
+shape = SubResource("RectangleShape2D_fgrwv")
+
+[node name="Lines" type="Node" parent="."]
+
+[node name="LinesColisions" type="StaticBody2D" parent="Lines"]
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Score_text" type="RichTextLabel" parent="HUD"]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 40.0
+bbcode_enabled = true
+
+[node name="life" type="Label" parent="HUD"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 34.0
+offset_right = 119.0
+offset_bottom = 57.0
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="floor" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("RectangleShape2D_w74eu")
+
+[node name="ceil" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("RectangleShape2D_3wwd0")
+
+[node name="right" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("RectangleShape2D_5qanq")
+
+[node name="left" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("RectangleShape2D_xa78q")
+
+[node name="Vision" type="Camera2D" parent="."]
+position = Vector2(575, 325)
